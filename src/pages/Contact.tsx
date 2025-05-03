@@ -5,8 +5,16 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { useToast } from "@/hooks/use-toast";
+import { 
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { useToast } from "@/components/ui/use-toast";
 import ScrollAnimation from "@/components/ScrollAnimation";
+import { Mail, Phone, Clock, MapPin } from "lucide-react";
 
 const Contact = () => {
   const { toast } = useToast();
@@ -14,31 +22,40 @@ const Contact = () => {
     name: '',
     email: '',
     phone: '',
+    company: '',
+    projectType: '',
     message: '',
   });
-
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSelectChange = (value) => {
+    setFormData(prev => ({ ...prev, projectType: value }));
+  };
+
+  const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate API call
+    // Simulate form submission
     setTimeout(() => {
       setIsSubmitting(false);
       toast({
-        title: "Message sent successfully!",
-        description: "We'll get back to you as soon as possible.",
+        title: "Message sent!",
+        description: "Thank you for contacting us. We'll be in touch shortly.",
       });
+      
+      // Reset form
       setFormData({
         name: '',
         email: '',
         phone: '',
+        company: '',
+        projectType: '',
         message: '',
       });
     }, 1500);
@@ -47,73 +64,151 @@ const Contact = () => {
   return (
     <div className="min-h-screen bg-white">
       <Navbar />
-
-      {/* Contact Hero */}
+      
+      {/* Hero Section */}
       <section className="bg-gray-50 py-16 md:py-24">
         <div className="container max-w-7xl mx-auto px-4 md:px-8">
           <ScrollAnimation>
             <div className="max-w-3xl mx-auto text-center">
               <span className="text-company-blue text-sm uppercase font-medium tracking-wide">Contact Us</span>
-              <h1 className="text-4xl md:text-5xl font-semibold mt-3 mb-6">Let's start a conversation</h1>
-              <p className="text-gray-600 mb-8">Whether you have a question about our services, pricing, or anything else, our team is ready to answer all your questions.</p>
+              <h1 className="text-4xl md:text-5xl font-semibold mt-3 mb-6">Let's build something incredible together</h1>
+              <p className="text-gray-600 mb-8">Have questions about our services or ready to start your project? Reach out to us today for a free consultation. We're here to help transform your business with a stunning website.</p>
             </div>
           </ScrollAnimation>
         </div>
       </section>
-
-      {/* Contact Form & Info */}
+      
+      {/* Contact Section */}
       <section className="container max-w-7xl mx-auto px-4 md:px-8 py-16">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          <ScrollAnimation direction="left">
-            <div>
-              <h2 className="text-3xl font-semibold mb-6">Get in touch</h2>
-              <p className="text-gray-600 mb-8">Fill out the form and our team will get back to you within 24 hours.</p>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* Contact Information */}
+          <ScrollAnimation direction="left" className="lg:col-span-1">
+            <div className="bg-gray-50 p-8 rounded-lg">
+              <h2 className="text-2xl font-semibold mb-6">Get in touch</h2>
+              <p className="text-gray-600 mb-8">Our team is ready to answer any questions you might have and discuss how we can help your business grow online.</p>
               
+              <div className="space-y-6">
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 bg-company-blue/10 rounded-full flex items-center justify-center flex-shrink-0">
+                    <Mail className="h-5 w-5 text-company-blue" />
+                  </div>
+                  <div>
+                    <h3 className="font-medium">Email</h3>
+                    <p className="text-gray-600">hello@yourcompany.com</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 bg-company-blue/10 rounded-full flex items-center justify-center flex-shrink-0">
+                    <Phone className="h-5 w-5 text-company-blue" />
+                  </div>
+                  <div>
+                    <h3 className="font-medium">Phone</h3>
+                    <p className="text-gray-600">(123) 456-7890</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 bg-company-blue/10 rounded-full flex items-center justify-center flex-shrink-0">
+                    <Clock className="h-5 w-5 text-company-blue" />
+                  </div>
+                  <div>
+                    <h3 className="font-medium">Business Hours</h3>
+                    <p className="text-gray-600">Monday - Friday: 9am - 5pm</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 bg-company-blue/10 rounded-full flex items-center justify-center flex-shrink-0">
+                    <MapPin className="h-5 w-5 text-company-blue" />
+                  </div>
+                  <div>
+                    <h3 className="font-medium">Location</h3>
+                    <p className="text-gray-600">123 Business Street, Suite 100<br />City, State 12345</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ScrollAnimation>
+          
+          {/* Contact Form */}
+          <ScrollAnimation direction="right" delay={0.2} className="lg:col-span-2">
+            <div className="bg-white p-8 rounded-lg shadow-sm">
+              <h2 className="text-2xl font-semibold mb-6">Send us a message</h2>
               <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
-                  <Input 
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    placeholder="Your name"
-                    required
-                  />
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Name*</label>
+                    <Input
+                      id="name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      placeholder="Your name"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email*</label>
+                    <Input
+                      id="email"
+                      name="email"
+                      type="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      placeholder="your.email@example.com"
+                      required
+                    />
+                  </div>
+                </div>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">Phone</label>
+                    <Input
+                      id="phone"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      placeholder="(123) 456-7890"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-1">Company</label>
+                    <Input
+                      id="company"
+                      name="company"
+                      value={formData.company}
+                      onChange={handleChange}
+                      placeholder="Your company name"
+                    />
+                  </div>
                 </div>
                 
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
-                  <Input 
-                    id="email"
-                    name="email"
-                    type="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    placeholder="you@example.com"
-                    required
-                  />
+                  <label htmlFor="projectType" className="block text-sm font-medium text-gray-700 mb-1">Project Type*</label>
+                  <Select onValueChange={handleSelectChange} value={formData.projectType} required>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select project type" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="new-website">New Website</SelectItem>
+                      <SelectItem value="redesign">Website Redesign</SelectItem>
+                      <SelectItem value="ecommerce">E-commerce Website</SelectItem>
+                      <SelectItem value="maintenance">Website Maintenance</SelectItem>
+                      <SelectItem value="other">Other</SelectItem>
+                    </SelectContent>
+                  </Select>
                 </div>
                 
                 <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">Phone Number (Optional)</label>
-                  <Input 
-                    id="phone"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    placeholder="Your phone number"
-                  />
-                </div>
-                
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">Your Message</label>
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">Message*</label>
                   <Textarea
                     id="message"
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
-                    placeholder="How can we help you?"
+                    placeholder="Tell us about your project needs and goals..."
                     rows={5}
                     required
                   />
@@ -121,78 +216,84 @@ const Contact = () => {
                 
                 <Button 
                   type="submit" 
-                  className="bg-company-blue hover:bg-company-blue-700 text-white w-full"
+                  className="w-full bg-company-blue hover:bg-company-blue-700 text-white"
                   disabled={isSubmitting}
                 >
-                  {isSubmitting ? 'Sending...' : 'Send Message'}
+                  {isSubmitting ? "Sending..." : "Send Message"}
                 </Button>
               </form>
             </div>
           </ScrollAnimation>
-          
-          <ScrollAnimation direction="right" delay={0.2}>
-            <div className="bg-gray-50 p-8 rounded-lg h-full">
-              <h3 className="text-xl font-semibold mb-6">Contact Information</h3>
-              
-              <div className="space-y-6">
-                <div>
-                  <h4 className="text-company-blue font-medium mb-2">Visit Us</h4>
-                  <p className="text-gray-700">123 Business Avenue</p>
-                  <p className="text-gray-700">San Francisco, CA 94107</p>
-                </div>
-                
-                <div>
-                  <h4 className="text-company-blue font-medium mb-2">Call Us</h4>
-                  <p className="text-gray-700">+1 234 567 8901</p>
-                  <p className="text-gray-700">Mon-Fri, 9am-6pm PST</p>
-                </div>
-                
-                <div>
-                  <h4 className="text-company-blue font-medium mb-2">Email Us</h4>
-                  <p className="text-gray-700">support@buildr.com</p>
-                  <p className="text-gray-700">sales@buildr.com</p>
-                </div>
-                
-                <div className="pt-6 border-t border-gray-200">
-                  <h4 className="text-company-blue font-medium mb-4">Follow Us</h4>
-                  <div className="flex space-x-4">
-                    <a href="#" className="text-gray-500 hover:text-company-blue">
-                      <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path fillRule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clipRule="evenodd" />
-                      </svg>
-                    </a>
-                    <a href="#" className="text-gray-500 hover:text-company-blue">
-                      <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
-                      </svg>
-                    </a>
-                    <a href="#" className="text-gray-500 hover:text-company-blue">
-                      <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path fillRule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clipRule="evenodd" />
-                      </svg>
-                    </a>
-                    <a href="#" className="text-gray-500 hover:text-company-blue">
-                      <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                      </svg>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </ScrollAnimation>
         </div>
       </section>
-
-      {/* Map Section (placeholder) */}
-      <section className="container max-w-7xl mx-auto px-4 md:px-8 py-16">
+      
+      {/* FAQ Section */}
+      <section className="bg-gray-50 py-16 md:py-24">
+        <div className="container max-w-7xl mx-auto px-4 md:px-8">
+          <ScrollAnimation>
+            <div className="max-w-3xl mx-auto text-center mb-12">
+              <span className="text-company-blue text-sm uppercase font-medium tracking-wide">FAQ</span>
+              <h2 className="text-3xl md:text-4xl font-semibold mt-3 mb-6">Frequently Asked Questions</h2>
+              <p className="text-gray-600">Answers to common questions about our services and process.</p>
+            </div>
+          </ScrollAnimation>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            {[
+              {
+                question: "How long does it take to build a website?",
+                answer: "The timeline varies depending on the complexity of the project. A basic website might take 2-3 weeks, while more complex sites with custom functionality could take 6-8 weeks or more."
+              },
+              {
+                question: "How much does a website cost?",
+                answer: "Our pricing is based on the specific requirements of each project. We offer different packages starting from $1,499. Contact us for a personalized quote."
+              },
+              {
+                question: "Do I really only pay after the website is complete?",
+                answer: "Yes! We believe in our work and want you to be completely satisfied. You only pay once the website is fully completed and you're happy with the result."
+              },
+              {
+                question: "Will my website work on mobile devices?",
+                answer: "Absolutely. All our websites are fully responsive and optimized for all devices including smartphones, tablets, and desktop computers."
+              },
+              {
+                question: "Can you help with website maintenance after launch?",
+                answer: "Yes, we offer ongoing maintenance and support packages to keep your website secure, updated, and performing optimally."
+              },
+              {
+                question: "What information do you need to get started?",
+                answer: "To begin, we'll need to understand your business goals, target audience, design preferences, and any specific functionality requirements. We'll guide you through this process during our initial consultation."
+              }
+            ].map((faq, index) => (
+              <ScrollAnimation key={index} delay={0.1 * index}>
+                <div className="bg-white p-6 rounded-lg shadow-sm">
+                  <h3 className="font-semibold text-lg mb-2">{faq.question}</h3>
+                  <p className="text-gray-600">{faq.answer}</p>
+                </div>
+              </ScrollAnimation>
+            ))}
+          </div>
+        </div>
+      </section>
+      
+      {/* CTA Section */}
+      <section className="container max-w-7xl mx-auto px-4 md:px-8 py-16 md:py-24">
         <ScrollAnimation>
-          <div className="h-96 bg-gray-200 rounded-lg flex items-center justify-center">
-            <p className="text-gray-600">Interactive Map would be placed here</p>
+          <div className="bg-company-blue rounded-lg p-8 md:p-12 text-white text-center">
+            <h2 className="text-3xl md:text-4xl font-semibold mb-4">Ready to transform your business?</h2>
+            <p className="text-white/90 mb-8 max-w-2xl mx-auto">Get in touch today for a free consultation. We'll help you create a stunning website that drives real results for your business.</p>
+            <div className="flex flex-col sm:flex-row justify-center gap-4">
+              <Button className="bg-white text-company-blue hover:bg-gray-100">
+                Call Us: (123) 456-7890
+              </Button>
+              <Button className="bg-transparent border border-white text-white hover:bg-white/10">
+                Email: hello@yourcompany.com
+              </Button>
+            </div>
           </div>
         </ScrollAnimation>
       </section>
-
+      
       <Footer />
     </div>
   );
