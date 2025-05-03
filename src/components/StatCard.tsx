@@ -1,5 +1,7 @@
 
 import React from 'react';
+import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 
 type StatCardProps = {
   value: string;
@@ -7,11 +9,31 @@ type StatCardProps = {
 };
 
 const StatCard = ({ value, label }: StatCardProps) => {
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.2,
+  });
+
+  const variants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" }
+    }
+  };
+
   return (
-    <div className="flex flex-col items-start">
+    <motion.div 
+      ref={ref}
+      initial="hidden"
+      animate={inView ? "visible" : "hidden"}
+      variants={variants}
+      className="flex flex-col items-start"
+    >
       <p className="text-4xl font-bold text-company-dark">{value}</p>
       <p className="text-gray-600">{label}</p>
-    </div>
+    </motion.div>
   );
 };
 
