@@ -14,11 +14,12 @@ import { StrictMode } from "react";
 
 const queryClient = new QueryClient();
 
+// Create App component with proper nesting of providers
 const App = () => (
   <StrictMode>
     <QueryClientProvider client={queryClient}>
-      <BrowserRouter>
-        <TooltipProvider>
+      <TooltipProvider>
+        <BrowserRouter>
           <Toaster />
           <Sonner />
           <Routes>
@@ -30,8 +31,8 @@ const App = () => (
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
-        </TooltipProvider>
-      </BrowserRouter>
+        </BrowserRouter>
+      </TooltipProvider>
     </QueryClientProvider>
   </StrictMode>
 );
