@@ -46,8 +46,8 @@ const ServiceCard = ({ title, description, features }: ServiceCardProps) => {
       variants={cardVariants}
       className="bg-gray-50 p-6 rounded-lg transition-all hover:shadow-md"
     >
-      <h3 className="text-xl font-semibold mb-3">{title}</h3>
-      <p className="text-gray-600 mb-6 text-sm">{description}</p>
+      <h3 className="text-xl font-semibold mb-3 text-company-dark">{title}</h3>
+      <p className="text-gray-600 mb-6 text-sm leading-relaxed">{description}</p>
       <div className="space-y-3 mb-6">
         {features.map((feature, index) => (
           <motion.div 
@@ -61,7 +61,7 @@ const ServiceCard = ({ title, description, features }: ServiceCardProps) => {
           </motion.div>
         ))}
       </div>
-      <Button className="bg-company-blue hover:bg-company-blue-700 text-white w-full" size="sm">
+      <Button className="bg-company-blue hover:bg-company-blue-700 text-white w-full font-medium" size="sm">
         Learn More
       </Button>
     </motion.div>

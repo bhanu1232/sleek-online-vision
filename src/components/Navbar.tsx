@@ -23,17 +23,17 @@ const Navbar = () => {
       <div className="container max-w-7xl mx-auto">
         <div className="flex items-center justify-between">
           <Link to="/" className="flex items-center space-x-1">
-            <div className="h-6 w-6 bg-company-blue rounded-sm"></div>
-            <span className="font-bold text-lg text-company-dark">Buildr</span>
+            <div className="h-7 w-7 bg-company-blue rounded-sm"></div>
+            <span className="font-semibold text-lg text-company-dark">Buildr</span>
           </Link>
           
           <nav className="hidden md:flex">
-            <ul className="flex space-x-8">
+            <ul className="flex space-x-10">
               {navItems.map((item, index) => (
                 <li key={index}>
                   <Link 
                     to={item.path} 
-                    className="text-gray-600 hover:text-company-blue transition-colors"
+                    className="text-gray-600 hover:text-company-blue transition-colors font-medium"
                   >
                     {item.label}
                   </Link>
@@ -43,10 +43,10 @@ const Navbar = () => {
           </nav>
           
           <div className="flex items-center space-x-4">
-            <a href="tel:+12345678901" className="hidden md:flex items-center text-sm text-gray-600 hover:text-company-blue">
+            <a href="tel:+12345678901" className="hidden md:flex items-center text-sm text-gray-600 hover:text-company-blue font-medium">
               <span>+1 234 567 8901</span>
             </a>
-            <Button className="bg-company-blue hover:bg-company-blue-700 text-white">
+            <Button className="bg-company-blue hover:bg-company-blue-700 text-white font-medium">
               Get in Touch
             </Button>
 
@@ -98,7 +98,7 @@ const Navbar = () => {
                   <li key={index}>
                     <Link 
                       to={item.path}
-                      className="text-gray-600 hover:text-company-blue transition-colors block py-2"
+                      className="text-gray-600 hover:text-company-blue transition-colors block py-2 font-medium"
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
                       {item.label}

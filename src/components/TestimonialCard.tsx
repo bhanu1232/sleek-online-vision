@@ -12,7 +12,7 @@ type TestimonialCardProps = {
 const TestimonialCard = ({ quote, author, position, company, imageSrc }: TestimonialCardProps) => {
   return (
     <div className="bg-company-blue/10 p-6 rounded-lg">
-      <p className="text-gray-800 mb-6 text-sm">{quote}</p>
+      <p className="text-gray-800 mb-6 text-sm leading-relaxed italic">{quote}</p>
       <div className="flex items-center space-x-3">
         <div className="h-10 w-10 bg-gray-300 rounded-full overflow-hidden">
           {imageSrc ? (
@@ -22,7 +22,7 @@ const TestimonialCard = ({ quote, author, position, company, imageSrc }: Testimo
               className="h-full w-full object-cover"
             />
           ) : (
-            <div className="h-full w-full flex items-center justify-center bg-company-blue text-white">
+            <div className="h-full w-full flex items-center justify-center bg-company-blue text-white font-medium">
               {author.charAt(0)}
             </div>
           )}
