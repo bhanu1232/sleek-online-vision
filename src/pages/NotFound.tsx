@@ -16,7 +16,7 @@ const NotFound = () => {
 
   return (
     <motion.div 
-      className="min-h-[80vh] flex items-center justify-center bg-gray-50 px-4"
+      className="min-h-[80vh] flex items-center justify-center bg-gray-50 px-4 pt-12"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -24,9 +24,9 @@ const NotFound = () => {
     >
       <div className="max-w-md w-full text-center bg-white p-8 sm:p-12 rounded-2xl shadow-lg">
         <div className="relative inline-block">
-          <div className="text-9xl font-bold text-gray-200">404</div>
+          <div className="text-8xl sm:text-9xl font-bold text-gray-200">404</div>
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-company-blue-500 to-company-blue-700">404</div>
+            <div className="text-5xl sm:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-company-blue-500 to-company-blue-700">404</div>
           </div>
         </div>
         
