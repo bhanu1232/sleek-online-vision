@@ -1,36 +1,40 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Facebook, Twitter, Instagram, Linkedin, ArrowRight } from 'lucide-react';
+import { Facebook, Twitter, Instagram, Linkedin, Github, Mail, Phone, MapPin, ArrowRight, ExternalLink } from 'lucide-react';
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-50/50">
-      <div className="container max-w-7xl mx-auto px-4 md:px-8 py-12">
+    <footer className="bg-gray-900 text-white">
+      {/* Main Footer */}
+      <div className="container max-w-7xl mx-auto px-4 md:px-8 pt-16 pb-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
-          <div className="space-y-4">
+          <div className="space-y-5">
             <Link to="/" className="flex items-center space-x-2">
-              <div className="h-8 w-8 bg-blue-600 rounded-lg flex items-center justify-center">
+              <div className="h-10 w-10 bg-gradient-to-br from-company-blue-400 to-company-blue-600 rounded-lg flex items-center justify-center">
                 <span className="text-white text-lg font-bold">SV</span>
               </div>
-              <span className="text-xl font-extralight text-gray-800">Sleek Vision</span>
+              <span className="text-xl font-medium text-white">Sleek Vision</span>
             </Link>
-            <p className="text-gray-600 text-sm leading-relaxed">
-              Creating exceptional digital experiences that drive business growth and success.
+            <p className="text-gray-400 text-sm leading-relaxed">
+              Transforming ideas into scalable web solutions. We specialize in crafting high-performance, 
+              scalable web applications tailored to your business needs.
             </p>
             <div className="flex space-x-4">
               {[
-                { icon: <Facebook className="h-5 w-5" />, href: "#" },
+                { icon: <Linkedin className="h-5 w-5" />, href: "https://linkedin.com" },
+                { icon: <Github className="h-5 w-5" />, href: "https://github.com" },
                 { icon: <Twitter className="h-5 w-5" />, href: "#" },
-                { icon: <Instagram className="h-5 w-5" />, href: "#" },
-                { icon: <Linkedin className="h-5 w-5" />, href: "#" }
+                { icon: <Instagram className="h-5 w-5" />, href: "#" }
               ].map((social, index) => (
                 <a
                   key={index}
                   href={social.href}
-                  className="text-gray-400 hover:text-blue-600 transition-colors duration-300"
+                  className="text-gray-400 hover:text-company-blue-400 transition-colors duration-300 bg-gray-800/80 p-2 rounded-full"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label={`Social link ${index + 1}`}
                 >
                   {social.icon}
                 </a>
@@ -40,20 +44,21 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-base font-normal text-gray-800 mb-4">Quick Links</h3>
+            <h3 className="text-lg font-medium text-white mb-5 border-b border-gray-800 pb-2">Navigation</h3>
             <ul className="space-y-3">
               {[
                 { name: 'Home', path: '/' },
-                { name: 'About', path: '/about' },
+                { name: 'About Us', path: '/about' },
                 { name: 'Services', path: '/services' },
+                { name: 'Portfolio', path: '/products' },
                 { name: 'Contact', path: '/contact' }
               ].map((link) => (
                 <li key={link.name}>
                   <Link
                     to={link.path}
-                    className="text-gray-600 hover:text-blue-600 text-sm transition-colors duration-300 inline-flex items-center group"
+                    className="text-gray-400 hover:text-company-blue-400 text-sm transition-colors duration-300 inline-flex items-center group"
                   >
-                    <ArrowRight className="h-4 w-4 mr-2 group-hover:translate-x-1 transition-transform duration-300" />
+                    <ArrowRight className="h-3.5 w-3.5 mr-2 opacity-0 group-hover:opacity-100 -ml-5 group-hover:ml-0 transition-all duration-300" />
                     {link.name}
                   </Link>
                 </li>
@@ -63,21 +68,22 @@ const Footer = () => {
 
           {/* Services */}
           <div>
-            <h3 className="text-base font-normal text-gray-800 mb-4">Services</h3>
+            <h3 className="text-lg font-medium text-white mb-5 border-b border-gray-800 pb-2">Services</h3>
             <ul className="space-y-3">
               {[
-                'Web Development',
-                'Mobile Apps',
-                'UI/UX Design',
-                'Digital Marketing'
+                { name: 'Custom Web Development', path: '/services' },
+                { name: 'Scalable Backend Systems', path: '/services' },
+                { name: 'School/Institution Portals', path: '/services' },
+                { name: 'E-commerce Solutions', path: '/services' },
+                { name: 'Event Management Systems', path: '/services' }
               ].map((service) => (
-                <li key={service}>
+                <li key={service.name}>
                   <Link
-                    to="/services"
-                    className="text-gray-600 hover:text-blue-600 text-sm transition-colors duration-300 inline-flex items-center group"
+                    to={service.path}
+                    className="text-gray-400 hover:text-company-blue-400 text-sm transition-colors duration-300 inline-flex items-center group"
                   >
-                    <ArrowRight className="h-4 w-4 mr-2 group-hover:translate-x-1 transition-transform duration-300" />
-                    {service}
+                    <ArrowRight className="h-3.5 w-3.5 mr-2 opacity-0 group-hover:opacity-100 -ml-5 group-hover:ml-0 transition-all duration-300" />
+                    {service.name}
                   </Link>
                 </li>
               ))}
@@ -86,37 +92,50 @@ const Footer = () => {
 
           {/* Contact */}
           <div>
-            <h3 className="text-base font-normal text-gray-800 mb-4">Contact</h3>
-            <ul className="space-y-3">
-              <li className="text-gray-600 text-sm">
-                <span className="font-medium">Email:</span> info@sleekvision.com
+            <h3 className="text-lg font-medium text-white mb-5 border-b border-gray-800 pb-2">Get in Touch</h3>
+            <ul className="space-y-4">
+              <li>
+                <a href="mailto:bchowdamfam@gmail.com" className="text-gray-400 hover:text-company-blue-400 text-sm flex items-start transition-colors duration-300">
+                  <Mail className="h-5 w-5 mr-3 mt-0.5 text-company-blue-400" />
+                  <span>bchowdamfam@gmail.com</span>
+                </a>
               </li>
-              <li className="text-gray-600 text-sm">
-                <span className="font-medium">Phone:</span> +1 (555) 123-4567
+              <li>
+                <a href="tel:+917207494328" className="text-gray-400 hover:text-company-blue-400 text-sm flex items-start transition-colors duration-300">
+                  <Phone className="h-5 w-5 mr-3 mt-0.5 text-company-blue-400" />
+                  <span>+91 72074 94328</span>
+                </a>
               </li>
-              <li className="text-gray-600 text-sm">
-                <span className="font-medium">Address:</span> 123 Digital Street, Tech City, TC 12345
+              <li className="text-gray-400 text-sm flex items-start">
+                <MapPin className="h-5 w-5 mr-3 mt-0.5 text-company-blue-400" />
+                <span>Tirupati, India</span>
+              </li>
+              <li className="pt-2">
+                <a href="https://cbhanuprakash.great-site.net" target="_blank" rel="noopener noreferrer" className="text-company-blue-400 hover:text-company-blue-300 text-sm flex items-center">
+                  <ExternalLink className="h-4 w-4 mr-2" />
+                  <span>cbhanuprakash.great-site.net</span>
+                </a>
               </li>
             </ul>
           </div>
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-gray-200 mt-12 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <p className="text-gray-600 text-sm font-extralight">
+        <div className="border-t border-gray-800 mt-10 pt-8">
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <p className="text-gray-400 text-sm">
               © {new Date().getFullYear()} Sleek Vision. All rights reserved.
             </p>
-            <div className="flex space-x-6">
+            <div className="flex space-x-6 mt-4 md:mt-0">
               {[
-                { name: 'Privacy Policy', path: '/privacy' },
-                { name: 'Terms of Service', path: '/terms' },
-                { name: 'Sitemap', path: '/sitemap' }
+                { name: 'Privacy Policy', path: '#' },
+                { name: 'Terms of Service', path: '#' },
+                { name: 'Sitemap', path: '#' }
               ].map((link) => (
                 <Link
                   key={link.name}
                   to={link.path}
-                  className="text-gray-600 hover:text-blue-600 text-sm transition-colors duration-300"
+                  className="text-gray-400 hover:text-company-blue-400 text-sm transition-colors duration-300"
                 >
                   {link.name}
                 </Link>

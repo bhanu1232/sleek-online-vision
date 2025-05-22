@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { CheckIcon, ArrowRight } from "lucide-react";
@@ -44,39 +45,41 @@ const ServiceCard = ({ title, description, features, icon }: ServiceCardProps) =
       initial="hidden"
       animate={inView ? "visible" : "hidden"}
       variants={cardVariants}
-      className="bg-white p-8 rounded-xl border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 group"
+      className="bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-xl transition-all duration-300 group overflow-hidden"
     >
-      {icon && (
-        <div className="h-12 w-12 bg-company-blue/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-company-blue/20 transition-colors duration-300">
-          {icon}
+      <div className="p-8">
+        {icon && (
+          <div className="h-12 w-12 bg-company-blue-100 text-company-blue-600 rounded-lg flex items-center justify-center mb-6 group-hover:bg-company-blue-600 group-hover:text-white transition-colors duration-300">
+            {icon}
+          </div>
+        )}
+
+        <h3 className="text-xl font-medium mb-3 text-company-dark group-hover:text-company-blue-600 transition-colors duration-300">{title}</h3>
+        <p className="text-gray-600 mb-6 text-sm leading-relaxed">{description}</p>
+
+        <div className="space-y-3 mb-6">
+          {features.map((feature, index) => (
+            <motion.div
+              key={index}
+              className="flex items-start gap-3 text-sm"
+              custom={index}
+              variants={featureVariants}
+            >
+              <div className="h-5 w-5 rounded-full bg-company-blue-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <CheckIcon className="h-3 w-3 text-company-blue-600" />
+              </div>
+              <p className="text-gray-700">{feature}</p>
+            </motion.div>
+          ))}
         </div>
-      )}
 
-      <h3 className="text-xl font-semibold mb-3 text-company-dark group-hover:text-company-blue transition-colors duration-300">{title}</h3>
-      <p className="text-gray-600 mb-6 text-sm leading-relaxed">{description}</p>
-
-      <div className="space-y-3 mb-6">
-        {features.map((feature, index) => (
-          <motion.div
-            key={index}
-            className="flex items-start gap-3 text-sm"
-            custom={index}
-            variants={featureVariants}
-          >
-            <div className="h-5 w-5 rounded-full bg-company-blue/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-              <CheckIcon className="h-3 w-3 text-company-blue" />
-            </div>
-            <p className="text-gray-700">{feature}</p>
-          </motion.div>
-        ))}
+        <Button
+          className="w-full bg-gradient-to-r from-company-blue-500 to-company-blue-700 hover:from-company-blue-600 hover:to-company-blue-800 text-white font-medium rounded-md transition-all duration-300"
+          size="sm"
+        >
+          Learn More <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
+        </Button>
       </div>
-
-      <Button
-        className="w-full bg-company-blue hover:bg-company-blue-700 text-white font-medium group-hover:translate-y-[-2px] transition-all duration-300"
-        size="sm"
-      >
-        Learn More <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
-      </Button>
     </motion.div>
   );
 };
