@@ -1,11 +1,10 @@
-
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ArrowRight } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
 
@@ -22,99 +21,90 @@ const Navbar = () => {
     return location.pathname === path;
   };
 
+  const navItems = [
+    { name: "Home", path: "/" },
+    { name: "About", path: "/about" },
+    { name: "Services", path: "/services" },
+    { name: "Products", path: "/products" },
+  ];
+
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-white shadow-md' : 'bg-white'
-    }`}>
+    <nav className={'fixed top-0 left-0 right-0 z-50 bg-white transition-all duration-300 shadow-md'}>
       <div className="container max-w-7xl mx-auto px-4 md:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
-            <div className="h-8 w-8 bg-gradient-to-br from-company-blue-500 to-company-blue-700 rounded-lg shadow-lg shadow-company-blue-500/20 flex items-center justify-center">
-              <span className="text-white text-sm font-bold">SV</span>
+          <Link to="/" className="flex items-center gap-3 group">
+            <div className="relative">
+              <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg blur opacity-20 group-hover:opacity-40 transition-opacity duration-300"></div>
+              <img src="/logo.png" alt="" className='relative h-10 w-10' />
             </div>
-            <span className="text-lg font-medium text-black">
-              Sleek Vision
-            </span>
+            <div className="flex flex-col">
+              <span className="text-xl font-bold bg-gradient-to-r from-blue-900 to-purple-900 bg-clip-text text-transparent">
+                Sleek Vision
+              </span>
+              {/* <span className="text-xs text-gray-500">Digital Excellence</span> */}
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-6">
-            {[
-              { name: 'Home', path: '/' },
-              { name: 'About', path: '/about' },
-              { name: 'Services', path: '/services' },
-              { name: 'Portfolio', path: '/products' },
-              { name: 'Contact', path: '/contact' }
-            ].map((item) => (
+          <div className="hidden md:flex items-center gap-8">
+            {navItems.map((item) => (
               <Link
-                key={item.name}
+                key={item.path}
                 to={item.path}
-                className={`text-sm transition-colors duration-300 relative group ${
-                  isActive(item.path) ? 'text-company-blue font-medium' : 'text-black hover:text-company-blue'
-                }`}
+                className={`text-sm font-medium transition-colors duration-200 ${isActive(item.path)
+                  ? 'text-purple-700'
+                  : 'text-gray-600 hover:text-purple-700'
+                  }`}
               >
                 {item.name}
-                <span className={`absolute left-0 bottom-[-4px] h-[2px] bg-company-blue-500 transition-all duration-300 ${isActive(item.path) ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
               </Link>
             ))}
-            
             <Link to="/contact">
-              <Button size="sm" className="bg-company-blue hover:bg-company-blue-700 text-white rounded-md">
-                Contact Us
+              <Button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white text-sm px-6 py-4 h-auto group rounded-full shadow-lg transition-all duration-300 transform hover:scale-105">
+                Get In Touch <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
               </Button>
             </Link>
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            className="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors duration-300"
-            onClick={() => setIsOpen(!isOpen)}
-            aria-label="Toggle menu"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200"
           >
-            {isOpen ? (
-              <X className="h-5 w-5 text-black" />
+            {isMenuOpen ? (
+              <X className="h-6 w-6 text-gray-600" />
             ) : (
-              <Menu className="h-5 w-5 text-black" />
+              <Menu className="h-6 w-6 text-gray-600" />
             )}
           </button>
         </div>
 
-        {/* Mobile Navigation */}
-        <div
-          className={`lg:hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-[80vh] opacity-100 py-4' : 'max-h-0 opacity-0 py-0 overflow-hidden'}`}
-        >
-          <div className="space-y-2">
-            {[
-              { name: 'Home', path: '/' },
-              { name: 'About', path: '/about' },
-              { name: 'Services', path: '/services' },
-              { name: 'Portfolio', path: '/products' },
-              { name: 'Contact', path: '/contact' }
-            ].map((item) => (
-              <Link
-                key={item.name}
-                to={item.path}
-                className={`block text-sm transition-colors duration-300 px-4 py-2 rounded-md ${
-                  isActive(item.path) 
-                    ? 'bg-company-blue-100 text-company-blue font-medium' 
-                    : 'text-black hover:bg-gray-100'
-                }`}
-                onClick={() => setIsOpen(false)}
-              >
-                {item.name}
-              </Link>
-            ))}
-            
-            <div className="mt-4 px-4">
-              <Link to="/contact" onClick={() => setIsOpen(false)}>
-                <Button className="w-full bg-company-blue hover:bg-company-blue-700 text-white text-sm rounded-md">
-                  Contact Us
+        {/* Mobile Menu */}
+        {isMenuOpen && (
+          <div className="md:hidden py-4 border-t border-gray-100">
+            <div className="flex flex-col gap-4">
+              {navItems.map((item) => (
+                <Link
+                  key={item.path}
+                  to={item.path}
+                  onClick={() => setIsMenuOpen(false)}
+                  className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors duration-200 ${isActive(item.path)
+                    ? 'bg-purple-100 text-purple-700'
+                    : 'text-gray-600 hover:bg-gray-100'
+                    }`}
+                >
+                  {item.name}
+                </Link>
+              ))}
+              <Link to="/contact" onClick={() => setIsMenuOpen(false)} className="px-4 mt-2">
+                <Button className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white text-sm px-6 py-2 h-auto group rounded-full shadow-lg transition-all duration-300 transform hover:scale-105">
+                  Contact <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
                 </Button>
               </Link>
             </div>
           </div>
-        </div>
+        )}
       </div>
     </nav>
   );

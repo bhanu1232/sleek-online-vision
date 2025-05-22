@@ -13,12 +13,12 @@ const Footer = () => {
           <div className="space-y-5">
             <Link to="/" className="flex items-center space-x-2">
               <div className="h-10 w-10 bg-gradient-to-br from-company-blue-400 to-company-blue-600 rounded-lg flex items-center justify-center">
-                <span className="text-white text-lg font-bold">SV</span>
+                <img src="/logo.png" alt="" />
               </div>
               <span className="text-xl font-medium text-white">Sleek Vision</span>
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed">
-              Transforming ideas into scalable web solutions. We specialize in crafting high-performance, 
+              Transforming ideas into scalable web solutions. We specialize in crafting high-performance,
               scalable web applications tailored to your business needs.
             </p>
             <div className="flex flex-wrap gap-3">

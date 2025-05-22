@@ -18,6 +18,7 @@ import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import { StrictMode } from "react";
 import { AnimatePresence } from "framer-motion";
+import BackToTop from './components/BackToTop';
 
 const queryClient = new QueryClient();
 
@@ -35,7 +36,7 @@ const ScrollToTop = () => {
 // AnimatedRoutes component for page transitions
 const AnimatedRoutes = () => {
   const location = useLocation();
-  
+
   return (
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>

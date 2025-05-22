@@ -6,205 +6,160 @@ import StatCard from "@/components/StatCard";
 import ServiceCard from "@/components/ServiceCard";
 import TestimonialCard from "@/components/TestimonialCard";
 import ScrollAnimation from "@/components/ScrollAnimation";
-import { ArrowRight, Rocket, Award, ShieldCheck, Clock, Users, TrendingUp, Code, Palette, ShoppingCart } from "lucide-react";
+import BackToTop from "@/components/BackToTop";
+import { ArrowRight, Rocket, Award, ShieldCheck, Clock, Users, TrendingUp, Code, Palette, ShoppingCart, MessageSquare, Settings, Headphones, Zap, Layers, TrendingUpIcon, UserCheck, Compass, Settings2 } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-white">
-      {/* Hero Section */}
-      <section className="container max-w-7xl mx-auto px-4 md:px-8 py-12 md:py-20">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-          {/* Main headline */}
-          <ScrollAnimation direction="left" className="col-span-1 md:col-span-2 p-8 md:p-12 bg-gray-50/50 rounded-2xl">
-            <span className="text-blue-600 text-sm font-normal tracking-wider uppercase">Professional Web Development</span>
-            <h1 className="text-4xl md:text-5xl font-normal mt-4 mb-6 leading-tight text-gray-800">Creating stunning, high-performance websites for commercial businesses</h1>
-            <p className="text-gray-600 text-lg mb-8 leading-relaxed">We bring together cutting-edge design, smooth animations, and flawless user experiences to help your business grow online.</p>
-            <Link to="/contact">
-              <Button className="bg-blue-600 hover:bg-blue-700 text-white text-base px-8 py-6 h-auto group">
-                Get Started <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
-              </Button>
-            </Link>
-          </ScrollAnimation>
+    <div className="min-h-screen bg-gray-50">
+      {/* Hero Section with Background Image */}
+      <section className="relative overflow-hidden pt-32 pb-20 md:pt-40 md:pb-32 text-white">
+        {/* Background Image with Overlay */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src="https://emeritus.org/wp-content/uploads/2022/08/c12-768x402.png" // Add your hero background image
+            alt="Hero Background"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-900/90 to-purple-900/90"></div>
+        </div>
 
-          {/* Blue box with quote */}
-          <ScrollAnimation direction="down" delay={0.2} className="col-span-1 bg-blue-600/90 text-white rounded-2xl p-8 md:p-10 flex flex-col justify-center relative overflow-hidden grid-pattern">
-            <div className="flex space-x-3 items-center mb-6">
-              <div className="h-12 w-12 rounded-full bg-white/20 flex items-center justify-center">
-                <ShieldCheck className="h-6 w-6" />
-              </div>
-              <div className="flex-1"></div>
-            </div>
-            <p className="text-white/90 text-lg mb-6 leading-relaxed">
-              "You only pay after your website is fully completed and live, ensuring you have complete confidence in the final result."
+        <div className="container max-w-7xl mx-auto px-4 md:px-8 text-center relative z-10">
+          <ScrollAnimation direction="down">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight tracking-tight">
+              Empower Your Business with Our Software Solutions
+            </h1>
+          </ScrollAnimation>
+          <ScrollAnimation direction="down" delay={0.2}>
+            <p className="text-lg md:text-xl text-blue-100 mb-10 max-w-3xl mx-auto opacity-90">
+              Streamline operations, boost productivity, and achieve your goals with our cutting-edge technology.
             </p>
-            <h4 className="font-normal text-xl">Our Promise</h4>
           </ScrollAnimation>
-
-          {/* Bottom left image */}
-          <ScrollAnimation direction="left" delay={0.3} className="col-span-1 bg-gray-50 rounded-2xl overflow-hidden h-64 md:h-auto">
-            <img
-              src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b"
-              alt="Technology"
-              className="w-full h-full object-cover"
-            />
-          </ScrollAnimation>
-
-          {/* Middle image with person */}
-          <ScrollAnimation direction="up" delay={0.4} className="col-span-1 bg-gray-50 rounded-2xl p-4 flex items-end h-64 md:h-auto relative overflow-hidden">
-            <img
-              src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81"
-              alt="Business professional"
-              className="absolute inset-0 w-full h-full object-cover object-center"
-            />
-          </ScrollAnimation>
-
-          {/* Dark blue stat box */}
-          <ScrollAnimation direction="right" delay={0.5} className="col-span-1 bg-blue-600/90 text-white rounded-2xl p-8 md:p-10 flex flex-col justify-center relative grid-pattern">
-            <h2 className="text-5xl md:text-6xl font-normal mb-4">100%</h2>
-            <p className="text-white/90 text-lg">Satisfaction Guarantee - Pay only when you're satisfied</p>
-          </ScrollAnimation>
-        </div>
-      </section>
-
-      {/* About Us Section */}
-      <section className="container max-w-7xl mx-auto px-4 md:px-8 py-16 md:py-28">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          <ScrollAnimation direction="left">
-            <div>
-              <span className="text-blue-600 text-sm font-normal tracking-wider uppercase">About us</span>
-              <h2 className="text-3xl md:text-4xl font-normal mt-4 mb-6 leading-tight text-gray-800">Understanding your business goals and crafting digital solutions</h2>
-              <p className="text-gray-600 text-lg mb-8 leading-relaxed">At our company, we take pride in understanding your business goals and crafting a digital solution that matches your brand, speaks to your audience, and drives real results. Our custom development services focus on building responsive, scalable websites that work perfectly across devices.</p>
-
-              <div className="flex space-x-12">
-                <StatCard value="100%" label="Client Satisfaction" />
-                <StatCard value="0" label="Upfront Fees" />
-              </div>
-            </div>
-          </ScrollAnimation>
-
-          <ScrollAnimation direction="right" delay={0.2}>
-            <div className="relative h-96 lg:h-[500px]">
-              <div className="absolute bottom-0 right-0 w-1/3 h-1/3 bg-blue-600 z-0 rounded-2xl"></div>
-              <div className="relative z-10 h-full">
-                <img
-                  src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158"
-                  alt="Professional on phone"
-                  className="h-full w-full object-cover rounded-2xl shadow-lg"
-                />
-              </div>
+          <ScrollAnimation direction="down" delay={0.4}>
+            <div className="flex justify-center space-x-4">
+              <Link to="/contact">
+                <Button className="bg-white text-blue-700 hover:bg-gray-100 font-semibold text-lg px-8 py-6 h-auto rounded-full shadow-lg transition-all duration-300 transform hover:scale-105">
+                  Get Started Today <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </Link>
+              <Link to="/services">
+                <Button variant="outline" className="border border-white text-white hover:bg-white hover:text-blue-700 font-semibold text-lg px-8 py-6 h-auto rounded-full shadow-lg transition-all duration-300 transform hover:scale-105">
+                  Learn More
+                </Button>
+              </Link>
             </div>
           </ScrollAnimation>
         </div>
       </section>
 
-      {/* Services Section */}
-      <section className="container max-w-7xl mx-auto px-4 md:px-8 py-16 md:py-28">
-        <ScrollAnimation>
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="text-blue-600 text-sm font-normal tracking-wider uppercase">Our Services</span>
-            <h2 className="text-3xl md:text-4xl font-normal mt-4 mb-6 leading-tight text-gray-800">Comprehensive web solutions for your business</h2>
-            <p className="text-gray-600 text-lg leading-relaxed">From custom website development and eye-catching UI/UX design to seamless deployment and long-term maintenance, our team is dedicated to bringing your digital vision to life.</p>
+      {/* Features Section */}
+      <section className="py-20 md:py-24 bg-white">
+        <div className="container max-w-7xl mx-auto px-4 md:px-8">
+          <ScrollAnimation>
+            <div className="text-center max-w-3xl mx-auto mb-16">
+              <span className="inline-block px-4 py-1 bg-blue-100 text-blue-700 text-sm font-medium rounded-full mb-4">FEATURES</span>
+              <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight tracking-tight text-gray-900">Unlock the Power of Our Software</h2>
+              <p className="text-gray-600 text-lg leading-relaxed">Discover how our solution can transform your workflow and drive innovation.</p>
+            </div>
+          </ScrollAnimation>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            {[ /* Adapted content from original Services/Why Choose Us */
+              {
+                icon: <Zap className="h-7 w-7 text-teal-500" />,
+                title: "Lightning Fast Performance",
+                description: "Experience unparalleled speed and efficiency in all your tasks."
+              },
+              {
+                icon: <Layers className="h-7 w-7 text-blue-500" />,
+                title: "Scalable Solutions",
+                description: "Grow your operations without limits, our software scales with you."
+              },
+              {
+                icon: <ShieldCheck className="h-7 w-7 text-green-500" />,
+                title: "Ironclad Security",
+                description: "Protect your data with our robust and state-of-the-art security measures."
+              },
+              {
+                icon: <TrendingUpIcon className="h-7 w-7 text-purple-500" />,
+                title: "Data-Driven Insights",
+                description: "Make informed decisions with powerful analytics and reporting."
+              },
+              {
+                icon: <UserCheck className="h-7 w-7 text-orange-500" />,
+                title: "Intuitive User Experience",
+                description: "Easy to use interface designed for maximum productivity and minimal training."
+              },
+              {
+                icon: <Compass className="h-7 w-7 text-red-500" />,
+                title: "Dedicated Support",
+                description: "Our team is here 24/7 to ensure you get the most out of our software."
+              }
+            ].map((feature, index) => (
+              <ScrollAnimation key={index} delay={0.1 * index}>
+                <div className="bg-gray-50 rounded-xl p-6 border border-gray-100 h-full transform hover:translate-y-1 transition-all duration-300">
+                  <div className="mb-4 text-blue-600">
+                    {feature.icon}
+                  </div>
+                  <h3 className="text-xl font-semibold mb-3 text-gray-900">{feature.title}</h3>
+                  <p className="text-gray-600 text-base">{feature.description}</p>
+                </div>
+              </ScrollAnimation>
+            ))}
           </div>
-        </ScrollAnimation>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <ServiceCard
-            title="Custom Website Development"
-            description="We build responsive, scalable websites that work perfectly across all devices and platforms."
-            features={[
-              "Responsive design",
-              "Cross-browser compatibility",
-              "Fast loading times",
-              "SEO-friendly structure"
-            ]}
-            icon={<Code className="h-6 w-6 text-blue-600" />}
-          />
-
-          <ServiceCard
-            title="UI/UX Design"
-            description="Our design team adds the creative touch with modern visuals and smooth, engaging animations."
-            features={[
-              "Modern aesthetics",
-              "Intuitive navigation",
-              "Eye-catching animations",
-              "Brand-aligned visuals"
-            ]}
-            icon={<Palette className="h-6 w-6 text-blue-600" />}
-          />
-
-          <ServiceCard
-            title="E-Commerce Solutions"
-            description="Set up a fully functional online store with a smooth checkout experience to reach more customers."
-            features={[
-              "Secure payment processing",
-              "Inventory management",
-              "Mobile-friendly shopping",
-              "Customer account features"
-            ]}
-            icon={<ShoppingCart className="h-6 w-6 text-blue-600" />}
-          />
         </div>
       </section>
 
       {/* How It Works Section */}
-      <section className="bg-gray-50/50 py-16 md:py-28">
+      <section className="py-20 md:py-24 bg-gray-100">
         <div className="container max-w-7xl mx-auto px-4 md:px-8">
           <ScrollAnimation>
-            <div className="max-w-3xl mx-auto text-center mb-16">
-              <span className="text-blue-600 text-sm font-normal tracking-wider uppercase">Our Process</span>
-              <h2 className="text-3xl md:text-4xl font-normal mt-4 mb-6 leading-tight text-gray-800">How it all works</h2>
-              <p className="text-gray-600 text-lg leading-relaxed">We make the process simple, transparent, and effective to deliver websites that exceed your expectations.</p>
+            <div className="text-center max-w-3xl mx-auto mb-16">
+              <span className="inline-block px-4 py-1 bg-blue-100 text-blue-700 text-sm font-medium rounded-full mb-4">HOW IT WORKS</span>
+              <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight tracking-tight text-gray-900">Simple Steps to Get Started</h2>
+              <p className="text-gray-600 text-lg leading-relaxed">Follow our straightforward process to implement and start benefiting from our software.</p>
             </div>
           </ScrollAnimation>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            {[
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+            {[ /* Using original How It Works data */
               {
                 step: "01",
                 title: "Free Consultation",
-                description: "We start with understanding your needs and business goals.",
-                icon: <Users className="h-6 w-6 text-blue-600" />,
-                color: "bg-blue-50"
+                description: "We discuss your needs and how our software can help.",
+                icon: <MessageSquare className="h-7 w-7 text-blue-600" />
               },
               {
                 step: "02",
-                title: "Design & Development",
-                description: "Our team brings your website vision to life with precision.",
-                icon: <Rocket className="h-6 w-6 text-blue-600" />,
-                color: "bg-purple-50"
+                title: "Custom Setup",
+                description: "Our team configures the software to fit your specific requirements.",
+                icon: <Settings2 className="h-7 w-7 text-teal-600" />
               },
               {
                 step: "03",
-                title: "Review & Revisions",
-                description: "We refine the website based on your feedback until perfect.",
-                icon: <Award className="h-6 w-6 text-blue-600" />,
-                color: "bg-green-50"
+                title: "Training & Onboarding",
+                description: "We ensure your team is fully equipped to use the software effectively.",
+                icon: <Users className="h-7 w-7 text-purple-600" />
               },
               {
                 step: "04",
-                title: "Deployment & Support",
-                description: "We handle launch and provide ongoing maintenance.",
-                icon: <ShieldCheck className="h-6 w-6 text-blue-600" />,
-                color: "bg-orange-50"
+                title: "Ongoing Support",
+                description: "Receive continuous support and updates to maximize your investment.",
+                icon: <Headphones className="h-7 w-7 text-orange-600" />
               }
             ].map((item, index) => (
               <ScrollAnimation key={index} delay={0.15 * index}>
-                <div className="relative bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 group">
-                  <div className={`absolute top-0 left-0 w-full h-1 ${item.color} rounded-t-2xl`}></div>
-                  <div className="flex items-center gap-4 mb-6">
-                    <div className={`h-12 w-12 ${item.color} rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
-                      {item.icon}
-                    </div>
-                    <div className="text-4xl font-normal text-gray-100 group-hover:text-blue-600/20 transition-colors duration-300">{item.step}</div>
+                <div className="bg-white rounded-xl p-6 border border-gray-100 h-full relative overflow-hidden">
+                  <div className="text-6xl font-bold text-gray-100 absolute -top-4 -right-4 opacity-50">{item.step}</div>
+                  <div className="mb-4 text-blue-600 relative z-10">
+                    {item.icon}
                   </div>
-                  <div>
-                    <h3 className="text-xl font-normal mb-2 group-hover:text-blue-600 transition-colors duration-300">{item.title}</h3>
-                    <p className="text-gray-600 text-base leading-relaxed">{item.description}</p>
-                  </div>
+                  <h3 className="text-xl font-semibold mb-3 text-gray-900 relative z-10">{item.title}</h3>
+                  <p className="text-gray-600 text-base leading-relaxed relative z-10">{item.description}</p>
                   {index < 3 && (
-                    <div className="hidden md:block absolute top-1/2 right-0 transform translate-x-1/2">
-                      <ArrowRight className="text-blue-600/30 group-hover:text-blue-600 transition-colors duration-300" />
+                    <div className="hidden lg:block absolute top-1/2 right-0 transform translate-x-1/2 -translate-y-1/2">
+                      <ArrowRight className="text-gray-400 h-8 w-8" />
                     </div>
                   )}
                 </div>
@@ -214,149 +169,110 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Why Choose Us Section */}
-      <section className="container max-w-7xl mx-auto px-4 md:px-8 py-16 md:py-28">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <ScrollAnimation direction="left">
-            <div className="relative h-96 lg:h-[500px]">
-              <div className="absolute bottom-0 left-0 w-1/4 h-1/4 bg-blue-600/10 z-0 rounded-2xl"></div>
-              <div className="absolute top-0 right-0 w-1/4 h-1/4 bg-blue-600/20 z-0 rounded-2xl"></div>
-              <div className="relative z-10 h-full">
-                <img
-                  src="https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7"
-                  alt="Team collaboration"
-                  className="h-full w-full object-cover rounded-2xl shadow-lg"
-                  loading="lazy"
-                />
+      {/* Testimonials Section */}
+      <section className="py-20 md:py-24 bg-white">
+        <div className="container max-w-7xl mx-auto px-4 md:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            {/* Testimonials Intro */}
+            <ScrollAnimation direction="left" className="lg:col-span-4">
+              <div className="pr-8">
+                <span className="inline-block px-4 py-1 bg-blue-100 text-blue-700 text-sm font-medium rounded-full mb-4">TESTIMONIALS</span>
+                <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight tracking-tight text-gray-900">What Our Clients Say</h2>
+                <p className="text-gray-600 text-lg leading-relaxed">Hear from businesses like yours who have achieved great results with our software.</p>
+              </div>
+            </ScrollAnimation>
+
+            {/* Testimonial Cards */}
+            <div className="lg:col-span-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
+                {/* Using original TestimonialCard component with potentially updated styling */}
+                <ScrollAnimation delay={0.1}>
+                  <TestimonialCard
+                    quote="Our productivity has increased significantly since implementing this software. The intuitive interface and powerful features have made a real difference."
+                    author="Michael S."
+                    position="CEO"
+                    company="Tech Solutions Inc."
+                  />
+                </ScrollAnimation>
+
+                <ScrollAnimation delay={0.2}>
+                  <TestimonialCard
+                    quote="The support team is incredibly responsive and helpful. We were able to get up and running quickly, and any questions we had were answered promptly."
+                    author="Sarah P."
+                    position="Operations Manager"
+                    company="Innovate Ltd."
+                  />
+                </ScrollAnimation>
+                {/* Add more testimonials as needed */}
               </div>
             </div>
-          </ScrollAnimation>
+          </div>
+        </div>
+      </section>
 
-          <ScrollAnimation direction="right" delay={0.2}>
-            <div>
-              <span className="text-blue-600 text-sm font-normal tracking-wider uppercase">Why Choose Us</span>
-              <h2 className="text-3xl md:text-4xl font-normal mt-4 mb-6 leading-tight text-gray-800">What sets us apart?</h2>
-              <p className="text-gray-600 text-lg mb-8 leading-relaxed">Our commitment to transparency and client satisfaction. With us, there are no upfront fees or hidden charges — you only pay once the project is fully delivered to your satisfaction.</p>
+      {/* Final CTA Section - Updated Design */}
+      <section className="relative py-20 md:py-32 overflow-hidden">
+        {/* Background with subtle pattern */}
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-purple-50">
+          <div className="absolute inset-0 opacity-10" style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+          }}></div>
+        </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                {[
-                  {
-                    icon: <Clock className="h-5 w-5 text-blue-600" />,
-                    title: "Fast Turnaround",
-                    description: "Quick delivery without compromising quality",
-                    color: "bg-blue-50"
-                  },
-                  {
-                    icon: <ShieldCheck className="h-5 w-5 text-blue-600" />,
-                    title: "Pay After Completion",
-                    description: "No upfront fees, pay when satisfied",
-                    color: "bg-purple-50"
-                  },
-                  {
-                    icon: <TrendingUp className="h-5 w-5 text-blue-600" />,
-                    title: "Performance Focused",
-                    description: "Websites that drive real business results",
-                    color: "bg-green-50"
-                  },
-                  {
-                    icon: <Users className="h-5 w-5 text-blue-600" />,
-                    title: "Ongoing Support",
-                    description: "Continuous maintenance and assistance",
-                    color: "bg-orange-50"
-                  }
-                ].map((item, index) => (
-                  <div key={index} className="group">
-                    <div className="flex items-start gap-4 p-6 rounded-xl hover:bg-white hover:shadow-md transition-all duration-300">
-                      <div className={`h-12 w-12 ${item.color} rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
-                        {item.icon}
-                      </div>
-                      <div>
-                        <h3 className="font-normal text-lg mb-1 group-hover:text-blue-600 transition-colors duration-300">{item.title}</h3>
-                        <p className="text-gray-600 text-base leading-relaxed">{item.description}</p>
+        <div className="container max-w-7xl mx-auto px-4 md:px-8 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            {/* CTA Content */}
+            <div className="lg:col-span-7">
+              <ScrollAnimation direction="left">
+                <div className="bg-white rounded-2xl p-8 md:p-12 shadow-xl">
+                  <span className="inline-block px-4 py-1 bg-blue-100 text-blue-700 text-sm font-medium rounded-full mb-4">GET STARTED</span>
+                  <h2 className="text-3xl md:text-5xl font-bold mb-6 leading-tight tracking-tight text-gray-900">
+                    Ready to Transform Your Business?
+                  </h2>
+                  <p className="text-lg md:text-xl text-gray-600 mb-8">
+                    Join thousands of satisfied customers who have revolutionized their workflow with our cutting-edge software solution.
+                  </p>
+                  <div className="flex flex-col sm:flex-row gap-4">
+                    <Link to="/contact">
+                      <Button className="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold text-lg px-8 py-6 h-auto rounded-full shadow-lg transition-all duration-300 transform hover:scale-105">
+                        Request a Demo <ArrowRight className="ml-2 h-5 w-5" />
+                      </Button>
+                    </Link>
+                    <Link to="/services">
+                      <Button variant="outline" className="w-full sm:w-auto border-2 border-gray-200 hover:border-blue-600 text-gray-700 hover:text-blue-600 font-semibold text-lg px-8 py-6 h-auto rounded-full transition-all duration-300">
+                        View service
+                      </Button>
+                    </Link>
+                  </div>
+                </div>
+              </ScrollAnimation>
+            </div>
+
+            {/* CTA Visual */}
+            <div className="lg:col-span-5">
+              <ScrollAnimation direction="right" delay={0.2}>
+                <div className="relative">
+                  <div className="absolute -inset-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl opacity-20 blur-2xl"></div>
+                  <div className="relative bg-white rounded-2xl p-4 shadow-xl">
+                    <img
+                      src="https://media.istockphoto.com/id/1428470293/vector/business-reporting-dashboard-concept-illustration.jpg?s=612x612&w=0&k=20&c=5kq8vvEkXEfxjWZLVCMIbCf-x3XSvXYQsE-BkWpeH0U=" // Add your dashboard/software interface image
+                      alt="Software Dashboard Preview"
+                      className="w-full h-auto rounded-xl"
+                    />
+                    <div className="absolute -bottom-4 -right-4 bg-white rounded-xl p-4 shadow-lg">
+                      <div className="flex items-center space-x-2">
+                        <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                        <span className="text-sm font-medium text-gray-700">Live Demo Available</span>
                       </div>
                     </div>
                   </div>
-                ))}
-              </div>
-
-              <div className="flex flex-col md:flex-row items-start md:items-center gap-4 mt-8">
-                <Link to="/contact">
-                  <Button className="bg-blue-600 hover:bg-blue-700 text-white text-base px-8 py-6 h-auto group">
-                    Get Started <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
-                  </Button>
-                </Link>
-                <Link to="/services">
-                  <Button variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-50 text-base px-8 py-6 h-auto group">
-                    Learn More <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
-                  </Button>
-                </Link>
-              </div>
+                </div>
+              </ScrollAnimation>
             </div>
-          </ScrollAnimation>
-        </div>
-      </section>
-
-      {/* Testimonials Section */}
-      <section className="container max-w-7xl mx-auto px-4 md:px-8 py-16 md:py-28">
-        <div className="flex flex-col md:flex-row gap-12 md:gap-16">
-          <ScrollAnimation direction="left" className="md:w-1/3">
-            <span className="text-blue-600 text-sm font-normal tracking-wider uppercase">Testimonials</span>
-            <h2 className="text-3xl md:text-4xl font-normal mt-4 mb-6 leading-tight text-gray-800">What our clients say about us</h2>
-            <p className="text-gray-600 text-lg mb-4 leading-relaxed">Don't just take our word for it. Here's what some of our satisfied clients have to say about their experience working with us.</p>
-          </ScrollAnimation>
-
-          <div className="md:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-6">
-            <ScrollAnimation delay={0.1}>
-              <TestimonialCard
-                quote="They transformed our online presence with a website that perfectly captures our brand. The no-upfront-fee policy gave us confidence in their commitment to quality."
-                author="Michael S."
-                position="CEO"
-                company="Retail Solutions Inc."
-              />
-            </ScrollAnimation>
-
-            <ScrollAnimation delay={0.2}>
-              <TestimonialCard
-                quote="The team's attention to detail and responsiveness made the process enjoyable. Our e-commerce site has significantly increased our online sales since launch."
-                author="Sarah P."
-                position="Marketing Director"
-                company="Artisan Creations"
-              />
-            </ScrollAnimation>
           </div>
         </div>
       </section>
-
-      {/* Final CTA Section */}
-      <section className="bg-gray-50/50 py-16 md:py-28">
-        <div className="container max-w-7xl mx-auto px-4 md:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <ScrollAnimation direction="left">
-              <div className="flex flex-col justify-center">
-                <h2 className="text-3xl md:text-4xl font-normal mb-6 leading-tight text-gray-800">
-                  Ready to transform your business with a stunning website?
-                </h2>
-                <p className="text-gray-600 text-lg mb-8 leading-relaxed">Reach out today for a free consultation. Together, let's build something incredible that sets your business apart and drives real success.</p>
-                <Link to="/contact">
-                  <Button className="bg-blue-600 hover:bg-blue-700 text-white text-base px-8 py-6 h-auto group">
-                    Get Started Now <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
-                  </Button>
-                </Link>
-              </div>
-            </ScrollAnimation>
-
-            <ScrollAnimation direction="right" delay={0.2}>
-              <div className="relative h-64 md:h-[400px]">
-                <img
-                  src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5"
-                  alt="Technology"
-                  className="h-full w-full object-cover rounded-2xl shadow-lg"
-                />
-              </div>
-            </ScrollAnimation>
-          </div>
-        </div>
-      </section>
+      <BackToTop />
     </div>
   );
 };
