@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { 
+import {
   Select,
   SelectContent,
   SelectItem,
@@ -40,7 +40,7 @@ const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     // Simulate form submission
     setTimeout(() => {
       setIsSubmitting(false);
@@ -48,7 +48,7 @@ const Contact = () => {
         title: "Message sent!",
         description: "Thank you for contacting us. We'll be in touch shortly.",
       });
-      
+
       // Reset form
       setFormData({
         name: '',
@@ -63,8 +63,6 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      <Navbar />
-      
       {/* Hero Section */}
       <section className="bg-gray-50 py-16 md:py-24">
         <div className="container max-w-7xl mx-auto px-4 md:px-8">
@@ -77,7 +75,7 @@ const Contact = () => {
           </ScrollAnimation>
         </div>
       </section>
-      
+
       {/* Contact Section */}
       <section className="container max-w-7xl mx-auto px-4 md:px-8 py-16">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -86,7 +84,7 @@ const Contact = () => {
             <div className="bg-gray-50 p-8 rounded-lg">
               <h2 className="text-2xl font-semibold mb-6">Get in touch</h2>
               <p className="text-gray-600 mb-8">Our team is ready to answer any questions you might have and discuss how we can help your business grow online.</p>
-              
+
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
                   <div className="w-10 h-10 bg-company-blue/10 rounded-full flex items-center justify-center flex-shrink-0">
@@ -97,7 +95,7 @@ const Contact = () => {
                     <p className="text-gray-600">hello@yourcompany.com</p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start gap-4">
                   <div className="w-10 h-10 bg-company-blue/10 rounded-full flex items-center justify-center flex-shrink-0">
                     <Phone className="h-5 w-5 text-company-blue" />
@@ -107,7 +105,7 @@ const Contact = () => {
                     <p className="text-gray-600">(123) 456-7890</p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start gap-4">
                   <div className="w-10 h-10 bg-company-blue/10 rounded-full flex items-center justify-center flex-shrink-0">
                     <Clock className="h-5 w-5 text-company-blue" />
@@ -117,7 +115,7 @@ const Contact = () => {
                     <p className="text-gray-600">Monday - Friday: 9am - 5pm</p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start gap-4">
                   <div className="w-10 h-10 bg-company-blue/10 rounded-full flex items-center justify-center flex-shrink-0">
                     <MapPin className="h-5 w-5 text-company-blue" />
@@ -130,7 +128,7 @@ const Contact = () => {
               </div>
             </div>
           </ScrollAnimation>
-          
+
           {/* Contact Form */}
           <ScrollAnimation direction="right" delay={0.2} className="lg:col-span-2">
             <div className="bg-white p-8 rounded-lg shadow-sm">
@@ -161,7 +159,7 @@ const Contact = () => {
                     />
                   </div>
                 </div>
-                
+
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">Phone</label>
@@ -184,7 +182,7 @@ const Contact = () => {
                     />
                   </div>
                 </div>
-                
+
                 <div>
                   <label htmlFor="projectType" className="block text-sm font-medium text-gray-700 mb-1">Project Type*</label>
                   <Select onValueChange={handleSelectChange} value={formData.projectType} required>
@@ -200,7 +198,7 @@ const Contact = () => {
                     </SelectContent>
                   </Select>
                 </div>
-                
+
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">Message*</label>
                   <Textarea
@@ -213,9 +211,9 @@ const Contact = () => {
                     required
                   />
                 </div>
-                
-                <Button 
-                  type="submit" 
+
+                <Button
+                  type="submit"
                   className="w-full bg-company-blue hover:bg-company-blue-700 text-white"
                   disabled={isSubmitting}
                 >
@@ -226,7 +224,7 @@ const Contact = () => {
           </ScrollAnimation>
         </div>
       </section>
-      
+
       {/* FAQ Section */}
       <section className="bg-gray-50 py-16 md:py-24">
         <div className="container max-w-7xl mx-auto px-4 md:px-8">
@@ -237,7 +235,7 @@ const Contact = () => {
               <p className="text-gray-600">Answers to common questions about our services and process.</p>
             </div>
           </ScrollAnimation>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {[
               {
@@ -275,7 +273,7 @@ const Contact = () => {
           </div>
         </div>
       </section>
-      
+
       {/* CTA Section */}
       <section className="container max-w-7xl mx-auto px-4 md:px-8 py-16 md:py-24">
         <ScrollAnimation>
@@ -293,8 +291,7 @@ const Contact = () => {
           </div>
         </ScrollAnimation>
       </section>
-      
-      <Footer />
+
     </div>
   );
 };

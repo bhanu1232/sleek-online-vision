@@ -1,43 +1,94 @@
-
 import React from 'react';
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import { Link } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
-import { ArrowRight, ShieldCheck, Award, Clock, TrendingUp } from "lucide-react";
-import StatCard from "@/components/StatCard";
+import { ArrowRight, Users, Target, Award, Heart, ShieldCheck, Clock, TrendingUp } from 'lucide-react';
 import ScrollAnimation from "@/components/ScrollAnimation";
-import { Link } from "react-router-dom";
 
 const About = () => {
   return (
-    <div className="min-h-screen bg-white">
-      <Navbar />
-
+    <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="container max-w-7xl mx-auto px-4 md:px-8 py-16 md:py-24">
+      <section className="container max-w-7xl mx-auto px-4 md:px-8 py-12 md:py-20">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+          {/* Main headline */}
+          <ScrollAnimation direction="left" className="col-span-1 md:col-span-2 p-8 md:p-12 bg-gray-50/50 rounded-2xl">
+            <span className="text-blue-600 text-sm font-normal tracking-wider uppercase">About Us</span>
+            <h1 className="text-4xl md:text-5xl font-normal mt-4 mb-6 leading-tight text-gray-800">Understanding your business goals and crafting digital solutions</h1>
+            <p className="text-gray-600 text-lg mb-8 leading-relaxed">At Sleek Vision, we take pride in understanding your business goals and crafting a digital solution that matches your brand, speaks to your audience, and drives real results.</p>
+            <Link to="/contact">
+              <Button className="bg-blue-600 hover:bg-blue-700 text-white text-base px-8 py-6 h-auto group">
+                Get in Touch <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
+              </Button>
+            </Link>
+          </ScrollAnimation>
+
+          {/* Blue box with quote */}
+          <ScrollAnimation direction="down" delay={0.2} className="col-span-1 bg-blue-600/90 text-white rounded-2xl p-8 md:p-10 flex flex-col justify-center relative overflow-hidden grid-pattern">
+            <div className="flex space-x-3 items-center mb-6">
+              <div className="h-12 w-12 rounded-full bg-white/20 flex items-center justify-center">
+                <ShieldCheck className="h-6 w-6" />
+              </div>
+              <div className="flex-1"></div>
+            </div>
+            <p className="text-white/90 text-lg mb-6 leading-relaxed">
+              "We believe in delivering excellence through innovation, collaboration, and a deep understanding of our clients' needs."
+            </p>
+            <h4 className="font-normal text-xl">Our Vision</h4>
+          </ScrollAnimation>
+        </div>
+      </section>
+
+      {/* Mission & Vision Section */}
+      <section className="container max-w-7xl mx-auto px-4 md:px-8 py-16 md:py-28">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           <ScrollAnimation direction="left">
             <div>
-              <span className="text-company-blue text-sm uppercase font-medium tracking-wide">About Our Company</span>
-              <h1 className="text-4xl md:text-5xl font-semibold mt-3 mb-6">Creating stunning, high-performance websites for commercial businesses</h1>
-              <p className="text-gray-600 mb-8">We specialize in creating stunning, high-performance websites that help commercial businesses grow and succeed online. We bring together cutting-edge design, smooth animations, and flawless user experiences to deliver websites that not only look beautiful but also perform at the highest level.</p>
-              <Link to="/services">
-                <Button className="bg-company-blue hover:bg-company-blue-700 text-white">
-                  Our Services <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-              </Link>
+              <span className="text-blue-600 text-sm font-normal tracking-wider uppercase">Our Mission</span>
+              <h2 className="text-3xl md:text-4xl font-normal mt-4 mb-6 leading-tight text-gray-800">Empowering businesses through digital innovation</h2>
+              <p className="text-gray-600 text-lg mb-8 leading-relaxed">We are dedicated to helping businesses thrive in the digital age by providing innovative solutions that drive growth and success. Our mission is to deliver exceptional digital experiences that make a real impact.</p>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                {[
+                  {
+                    icon: <Clock className="h-5 w-5 text-blue-600" />,
+                    title: "Fast Turnaround",
+                    description: "Quick delivery without compromising quality",
+                    color: "bg-blue-50"
+                  },
+                  {
+                    icon: <ShieldCheck className="h-5 w-5 text-blue-600" />,
+                    title: "Quality First",
+                    description: "Excellence in every project we undertake",
+                    color: "bg-purple-50"
+                  }
+                ].map((item, index) => (
+                  <div key={index} className="group">
+                    <div className="flex items-start gap-4 p-6 rounded-xl hover:bg-white hover:shadow-md transition-all duration-300">
+                      <div className={`h-12 w-12 ${item.color} rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
+                        {item.icon}
+                      </div>
+                      <div>
+                        <h3 className="font-normal text-lg mb-1 group-hover:text-blue-600 transition-colors duration-300">{item.title}</h3>
+                        <p className="text-gray-600 text-base leading-relaxed">{item.description}</p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </ScrollAnimation>
 
           <ScrollAnimation direction="right" delay={0.2}>
-            <div className="relative h-96 lg:h-auto">
-              <div className="absolute bottom-0 right-0 w-1/3 h-1/3 bg-company-blue-200 z-0"></div>
-              <div className="absolute top-0 left-0 w-1/3 h-1/3 bg-company-blue z-0"></div>
+            <div className="relative h-96 lg:h-[500px]">
+              <div className="absolute bottom-0 right-0 w-1/3 h-1/3 bg-blue-600 z-0 rounded-2xl"></div>
               <div className="relative z-10 h-full">
-                <img 
-                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c" 
-                  alt="Team collaboration" 
-                  className="h-full w-full object-cover rounded-lg"
+                <img
+                  src="/images/about/mission.webp"
+                  alt="Our Mission"
+                  className="h-full w-full object-cover rounded-2xl shadow-lg"
+                  loading="lazy"
+                  width="800"
+                  height="600"
                 />
               </div>
             </div>
@@ -45,168 +96,185 @@ const About = () => {
         </div>
       </section>
 
-      {/* Our Story Section */}
-      <section className="bg-gray-50 py-16 md:py-24">
+      {/* Values Section */}
+      <section className="bg-gray-50/50 py-16 md:py-28">
         <div className="container max-w-7xl mx-auto px-4 md:px-8">
           <ScrollAnimation>
-            <div className="max-w-3xl mx-auto text-center mb-16">
-              <span className="text-company-blue text-sm uppercase font-medium tracking-wide">Our Philosophy</span>
-              <h2 className="text-3xl md:text-4xl font-semibold mt-3 mb-6">What makes us different</h2>
-              <p className="text-gray-600">We take pride in understanding your business goals and crafting a digital solution that matches your brand, speaks to your audience, and drives real results.</p>
+            <div className="text-center max-w-3xl mx-auto mb-16">
+              <span className="text-blue-600 text-sm font-normal tracking-wider uppercase">Our Values</span>
+              <h2 className="text-3xl md:text-4xl font-normal mt-4 mb-6 leading-tight text-gray-800">The principles that guide everything we do</h2>
+              <p className="text-gray-600 text-lg leading-relaxed">Our core values shape our approach to every project and interaction.</p>
             </div>
           </ScrollAnimation>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <ScrollAnimation delay={0.1}>
-              <div className="bg-white p-8 rounded-lg shadow-sm">
-                <div className="w-12 h-12 bg-company-blue-100 rounded-full flex items-center justify-center mb-6">
-                  <ShieldCheck className="h-6 w-6 text-company-blue" />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {values.map((value, index) => (
+              <ScrollAnimation key={index} delay={0.1 * index}>
+                <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                  <div className="h-12 w-12 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
+                    {value.icon}
+                  </div>
+                  <h3 className="text-xl font-normal mb-4">{value.title}</h3>
+                  <p className="text-gray-600">{value.description}</p>
                 </div>
-                <h3 className="text-xl font-semibold mb-3">Client-First Approach</h3>
-                <p className="text-gray-600 text-sm">We believe in complete transparency and client satisfaction. You only pay once the project is fully delivered to your satisfaction.</p>
-              </div>
-            </ScrollAnimation>
-
-            <ScrollAnimation delay={0.2}>
-              <div className="bg-white p-8 rounded-lg shadow-sm">
-                <div className="w-12 h-12 bg-company-blue-100 rounded-full flex items-center justify-center mb-6">
-                  <Award className="h-6 w-6 text-company-blue" />
-                </div>
-                <h3 className="text-xl font-semibold mb-3">Quality Craftsmanship</h3>
-                <p className="text-gray-600 text-sm">Our design team adds the creative touch with modern visuals and smooth, engaging animations that capture attention and keep users on your site.</p>
-              </div>
-            </ScrollAnimation>
-
-            <ScrollAnimation delay={0.3}>
-              <div className="bg-white p-8 rounded-lg shadow-sm">
-                <div className="w-12 h-12 bg-company-blue-100 rounded-full flex items-center justify-center mb-6">
-                  <TrendingUp className="h-6 w-6 text-company-blue" />
-                </div>
-                <h3 className="text-xl font-semibold mb-3">Long-term Support</h3>
-                <p className="text-gray-600 text-sm">We offer ongoing maintenance and support to ensure your site stays updated, secure, and optimized for performance.</p>
-              </div>
-            </ScrollAnimation>
+              </ScrollAnimation>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Our Process Section */}
-      <section className="container max-w-7xl mx-auto px-4 md:px-8 py-16 md:py-24">
-        <ScrollAnimation>
-          <div className="max-w-3xl mx-auto text-center mb-16">
-            <span className="text-company-blue text-sm uppercase font-medium tracking-wide">How We Work</span>
-            <h2 className="text-3xl md:text-4xl font-semibold mt-3 mb-6">Our simple process delivers results</h2>
-            <p className="text-gray-600">We start with a free consultation to understand your needs, followed by the design and development phase where we bring your website to life.</p>
-          </div>
-        </ScrollAnimation>
+      {/* Team Section */}
+      <section className="container max-w-7xl mx-auto px-4 md:px-8 py-16 md:py-28">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <ScrollAnimation direction="left">
+            <div>
+              <span className="text-blue-600 text-sm font-normal tracking-wider uppercase">Our Team</span>
+              <h2 className="text-3xl md:text-4xl font-normal mt-4 mb-6 leading-tight text-gray-800">Meet the talented people behind our success</h2>
+              <p className="text-gray-600 text-lg mb-8 leading-relaxed">Our diverse team of experts brings together a wealth of experience and creativity to deliver exceptional results for our clients.</p>
 
-        <div className="space-y-12 md:space-y-0 md:grid md:grid-cols-2 md:gap-x-8 md:gap-y-12">
-          {[
-            {
-              number: "01",
-              title: "Free Consultation",
-              description: "We start with understanding your business needs, goals, and target audience to create a tailored approach."
-            },
-            {
-              number: "02",
-              title: "Design & Development",
-              description: "Our team designs and builds your website with a focus on modern aesthetics, functionality, and user experience."
-            },
-            {
-              number: "03",
-              title: "Review & Revisions",
-              description: "We present the initial build for your feedback and make any necessary revisions until you're completely satisfied."
-            },
-            {
-              number: "04",
-              title: "Deployment & Payment",
-              description: "Once approved, we handle all aspects of deployment. You only pay after your website is fully completed and live."
-            }
-          ].map((step, index) => (
-            <ScrollAnimation key={index} delay={0.15 * index}>
-              <div className="relative">
-                <div className="absolute flex items-center justify-center h-12 w-12 rounded-md bg-company-blue text-white">
-                  <span className="font-bold">{step.number}</span>
-                </div>
-                <div className="ml-16">
-                  <h3 className="text-xl font-medium text-gray-900">{step.title}</h3>
-                  <p className="mt-2 text-base text-gray-600">{step.description}</p>
-                </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                {[
+                  {
+                    icon: <TrendingUp className="h-5 w-5 text-blue-600" />,
+                    title: "Expert Team",
+                    description: "Skilled professionals with years of experience",
+                    color: "bg-green-50"
+                  },
+                  {
+                    icon: <Users className="h-5 w-5 text-blue-600" />,
+                    title: "Collaborative",
+                    description: "Working together to achieve your goals",
+                    color: "bg-orange-50"
+                  }
+                ].map((item, index) => (
+                  <div key={index} className="group">
+                    <div className="flex items-start gap-4 p-6 rounded-xl hover:bg-white hover:shadow-md transition-all duration-300">
+                      <div className={`h-12 w-12 ${item.color} rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
+                        {item.icon}
+                      </div>
+                      <div>
+                        <h3 className="font-normal text-lg mb-1 group-hover:text-blue-600 transition-colors duration-300">{item.title}</h3>
+                        <p className="text-gray-600 text-base leading-relaxed">{item.description}</p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
-            </ScrollAnimation>
-          ))}
-        </div>
-      </section>
-
-      {/* Our Promise Section */}
-      <section className="bg-company-blue bg-opacity-5 py-16 md:py-24">
-        <div className="container max-w-7xl mx-auto px-4 md:px-8">
-          <ScrollAnimation>
-            <div className="max-w-3xl mx-auto text-center mb-16">
-              <span className="text-company-blue text-sm uppercase font-medium tracking-wide">Our Promise</span>
-              <h2 className="text-3xl md:text-4xl font-semibold mt-3 mb-6">A straightforward guarantee</h2>
-              <p className="text-gray-600">We proudly stand by a simple and transparent promise — you only pay after your website is fully completed and live, ensuring you have complete confidence in the final result.</p>
             </div>
           </ScrollAnimation>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <StatCard value="100%" label="Satisfaction Guarantee" />
-            <StatCard value="0" label="Upfront Fees" />
-            <StatCard value="24/7" label="Support Available" />
-            <StatCard value="100+" label="Happy Clients" />
-          </div>
-        </div>
-      </section>
-
-      {/* Industries We Serve */}
-      <section className="container max-w-7xl mx-auto px-4 md:px-8 py-16 md:py-24">
-        <ScrollAnimation>
-          <div className="max-w-3xl mx-auto text-center mb-16">
-            <span className="text-company-blue text-sm uppercase font-medium tracking-wide">Industries</span>
-            <h2 className="text-3xl md:text-4xl font-semibold mt-3 mb-6">Who we work with</h2>
-            <p className="text-gray-600">We are passionate about helping businesses across industries establish a powerful and professional online presence.</p>
-          </div>
-        </ScrollAnimation>
-
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-          {[
-            {title: "Retail Shops", icon: "🛍️"},
-            {title: "Restaurants", icon: "🍽️"},
-            {title: "Service Providers", icon: "🛠️"},
-            {title: "E-commerce Brands", icon: "🛒"},
-            {title: "Healthcare", icon: "⚕️"},
-            {title: "Education", icon: "📚"},
-            {title: "Real Estate", icon: "🏠"},
-            {title: "Professional Services", icon: "💼"}
-          ].map((industry, index) => (
-            <ScrollAnimation key={index} delay={0.05 * index}>
-              <div className="bg-white p-5 rounded-lg shadow-sm text-center hover:shadow-md transition-shadow duration-300">
-                <div className="text-4xl mb-3">{industry.icon}</div>
-                <h3 className="font-medium">{industry.title}</h3>
-              </div>
-            </ScrollAnimation>
-          ))}
+          <ScrollAnimation direction="right" delay={0.2}>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {team.map((member, index) => (
+                <div
+                  key={index}
+                  className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300"
+                >
+                  <img
+                    src={`/images/team/${member.image}`}
+                    alt={member.name}
+                    className="w-full h-48 object-cover"
+                    loading="lazy"
+                    width="400"
+                    height="300"
+                  />
+                  <div className="p-6">
+                    <h3 className="text-xl font-normal mb-2">{member.name}</h3>
+                    <p className="text-blue-600 mb-4">{member.role}</p>
+                    <p className="text-gray-600">{member.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </ScrollAnimation>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="bg-company-blue py-16 md:py-24">
-        <div className="container max-w-7xl mx-auto px-4 md:px-8 text-center">
-          <ScrollAnimation>
-            <h2 className="text-3xl md:text-4xl font-semibold text-white mb-6">Ready to transform your business with a stunning website?</h2>
-            <p className="text-white/90 mb-8 max-w-2xl mx-auto">Our goal is to make the process smooth, enjoyable, and worry-free, while delivering a final product you can be proud of.</p>
-            <Link to="/contact">
-              <Button className="bg-white text-company-blue hover:bg-gray-100">
-                Get a Free Consultation
-              </Button>
-            </Link>
-          </ScrollAnimation>
+      <section className="bg-gray-50/50 py-16 md:py-28">
+        <div className="container max-w-7xl mx-auto px-4 md:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <ScrollAnimation direction="left">
+              <div className="flex flex-col justify-center">
+                <h2 className="text-3xl md:text-4xl font-normal mb-6 leading-tight text-gray-800">
+                  Ready to work together?
+                </h2>
+                <p className="text-gray-600 text-lg mb-8 leading-relaxed">Let's create something amazing together. Get in touch with us today to discuss your project.</p>
+                <Link to="/contact">
+                  <Button className="bg-blue-600 hover:bg-blue-700 text-white text-base px-8 py-6 h-auto group">
+                    Contact Us <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
+                  </Button>
+                </Link>
+              </div>
+            </ScrollAnimation>
+
+            <ScrollAnimation direction="right" delay={0.2}>
+              <div className="relative h-64 md:h-[400px]">
+                <img
+                  src="/images/about/cta.webp"
+                  alt="Team Collaboration"
+                  className="h-full w-full object-cover rounded-2xl shadow-lg"
+                  loading="lazy"
+                  width="800"
+                  height="600"
+                />
+              </div>
+            </ScrollAnimation>
+          </div>
         </div>
       </section>
-
-      <Footer />
     </div>
   );
 };
+
+const values = [
+  {
+    icon: <Target className="h-6 w-6 text-blue-600" />,
+    title: "Excellence",
+    description: "We strive for excellence in everything we do, delivering the highest quality solutions."
+  },
+  {
+    icon: <Users className="h-6 w-6 text-blue-600" />,
+    title: "Collaboration",
+    description: "We believe in the power of teamwork and close collaboration with our clients."
+  },
+  {
+    icon: <Award className="h-6 w-6 text-blue-600" />,
+    title: "Innovation",
+    description: "We constantly explore new technologies and approaches to stay ahead."
+  },
+  {
+    icon: <Heart className="h-6 w-6 text-blue-600" />,
+    title: "Passion",
+    description: "We're passionate about creating digital solutions that make a difference."
+  }
+];
+
+const team = [
+  {
+    name: "John Doe",
+    role: "CEO & Founder",
+    description: "With over 15 years of experience in digital technology, John leads our team with vision and expertise.",
+    image: "john-doe.webp"
+  },
+  {
+    name: "Jane Smith",
+    role: "Creative Director",
+    description: "Jane brings creativity and innovation to every project, ensuring exceptional design outcomes.",
+    image: "jane-smith.webp"
+  },
+  {
+    name: "Mike Johnson",
+    role: "Lead Developer",
+    description: "Mike's technical expertise and problem-solving skills drive our development excellence.",
+    image: "mike-johnson.webp"
+  },
+  {
+    name: "Sarah Wilson",
+    role: "UX Designer",
+    description: "Sarah creates intuitive and engaging user experiences that delight our clients and their users.",
+    image: "sarah-wilson.webp"
+  }
+];
 
 export default About;
