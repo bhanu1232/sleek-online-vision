@@ -72,7 +72,7 @@ const Contact = () => {
                     {
                       icon: <Clock className="h-6 w-6 text-orange-600" />,
                       title: "Business Hours",
-                      content: "Monday - Friday: 9:00 AM - 6:00 PM",
+                      content: "Monday -Friday: 9:00 AM - 6:00 PM",
                       link: null
                     }
                   ].map((item, index) => (
