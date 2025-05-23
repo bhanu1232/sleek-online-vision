@@ -51,74 +51,74 @@ const Products = () => {
     {
       title: "Business Essential",
       description: "A professional website perfect for small to medium businesses looking to establish an online presence.",
-      imageSrc: "https://images.unsplash.com/photo-1460925895917-afdab827c52f",
+      imageSrc: "https://mountaintopwebdesign.com/wp-content/uploads/10benefitesofawebsite.jpg",
       features: [
         "5-7 Pages",
         "Mobile Responsive",
         "Contact Form",
         "SEO Basics"
       ],
-      price: "Starting at $1,499"
+      price: "Starting at ₹4999"
     },
     {
       title: "E-Commerce Standard",
       description: "A complete online store solution with everything you need to start selling products online.",
-      imageSrc: "https://images.unsplash.com/photo-1556742031-c6961e8560b0",
+      imageSrc: "https://4.imimg.com/data4/MJ/OH/IOS-47592400/product-250x250.jpeg",
       features: [
         "Product Catalog",
         "Secure Checkout",
         "Inventory Management",
         "Payment Processing"
       ],
-      price: "Starting at $2,499"
+      price: "Starting at ₹12999"
     },
     {
       title: "Premium Brand Experience",
       description: "A fully customized website with advanced features and animations for established brands.",
-      imageSrc: "https://images.unsplash.com/photo-1547658719-da2b51169166",
+      imageSrc: "https://img.freepik.com/premium-vector/star-digital-business-brand-content-concept_109722-2728.jpg",
       features: [
         "Custom Design",
         "Advanced Animations",
         "Content Management",
         "Analytics Integration"
       ],
-      price: "Starting at $3,999"
+      price: "Starting at ₹5,999"
     },
     {
       title: "Service Professional",
       description: "Ideal for service-based businesses needing to showcase their expertise and generate leads.",
-      imageSrc: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40",
+      imageSrc: "https://img.freepik.com/free-vector/flat-design-illustration-customer-support_23-2148887720.jpg?semt=ais_hybrid&w=740",
       features: [
         "Portfolio Display",
         "Testimonial System",
         "Appointment Booking",
         "Lead Generation Forms"
       ],
-      price: "Starting at $1,999"
+      price: "Starting at ₹8,999"
     },
     {
       title: "Restaurant & Cafe",
       description: "Specialized website for restaurants, cafes and food businesses with menu and ordering capabilities.",
-      imageSrc: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4",
+      imageSrc: "https://img.freepik.com/free-vector/restaurant-flat-illustration_23-2147538098.jpg",
       features: [
         "Menu Display",
         "Reservation System",
         "Location Map",
         "Mobile Ordering Option"
       ],
-      price: "Starting at $1,799"
+      price: "Starting at ₹5,799"
     },
     {
       title: "Real Estate Pro",
       description: "Comprehensive website solution for real estate agents and property management companies.",
-      imageSrc: "https://images.unsplash.com/photo-1560518883-ce09059eeffa",
+      imageSrc: "https://cdni.iconscout.com/illustration/premium/preview/real-estate-agent-illustration-download-in-svg-png-gif-file-formats--property-location-finance-pack-buildings-illustrations-5861648.png?f=webp&h=700",
       features: [
         "Property Listings",
         "Virtual Tours",
         "Search Functionality",
         "Lead Capture Forms"
       ],
-      price: "Starting at $2,299"
+      price: "Starting at ₹5,299"
     }
   ];
 
@@ -243,7 +243,7 @@ const Products = () => {
                 <div className="absolute -inset-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl opacity-20 blur-2xl"></div>
                 <div className="relative bg-white rounded-2xl p-4 shadow-xl">
                   <img
-                    src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                    src="https://m.economictimes.com/thumb/msid-57848524,width-1200,height-900,resizemode-4,imgsize-235266/four-principles-of-organisational-excellence-which-every-small-business-should-know.jpg"
                     alt="Our Process"
                     className="w-full h-auto rounded-xl"
                   />

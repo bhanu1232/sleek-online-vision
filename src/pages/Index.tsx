@@ -44,7 +44,7 @@ const Index = () => {
                 </Button>
               </Link>
               <Link to="/services">
-                <Button variant="outline" className="border border-white text-white hover:bg-white hover:text-blue-700 font-semibold text-lg px-8 py-6 h-auto rounded-full shadow-lg transition-all duration-300 transform hover:scale-105">
+                <Button variant="outline" className="border max-sm:hidden border-white text-white hover:bg-white hover:text-blue-700 font-semibold text-lg px-8 py-6 h-auto rounded-full shadow-lg transition-all duration-300 transform hover:scale-105">
                   Learn More
                 </Button>
               </Link>
